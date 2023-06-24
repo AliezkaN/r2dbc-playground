@@ -1,7 +1,7 @@
 package com.aliezkan.r2dbcplayground.controller;
 
 import com.aliezkan.r2dbcplayground.dto.ClientDto;
-import com.aliezkan.r2dbcplayground.service.ClientPurchaseService;
+import com.aliezkan.r2dbcplayground.service.ClientService;
 import com.aliezkan.r2dbcplayground.service.selma.SelmaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +18,12 @@ import java.util.stream.Collectors;
 @RequestMapping("aliezkaN/api/clients")
 public class ClientController {
 
-    private final ClientPurchaseService clientPurchaseService;
+    private final ClientService clientService;
     private final SelmaService selma;
 
     @GetMapping
     Mono<List<ClientDto>> getAll() {
-        return clientPurchaseService.getAllClients()
+        return clientService.getAllClients()
                 .map(entities -> entities.stream()
                         .map(selma::toDto)
                         .collect(Collectors.toList()));
@@ -31,6 +31,6 @@ public class ClientController {
 
     @GetMapping("/{clientId}")
     Mono<ClientDto> getClientById(@PathVariable Long clientId){
-        return clientPurchaseService.getClientById(clientId).map(selma::toDto);
+        return clientService.getClientById(clientId).map(selma::toDto);
     }
 }

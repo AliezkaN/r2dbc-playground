@@ -1,7 +1,8 @@
-package com.aliezkan.r2dbcplayground.service;
+package com.aliezkan.r2dbcplayground.service.impl;
 
 import com.aliezkan.r2dbcplayground.dao.ClientDAO;
 import com.aliezkan.r2dbcplayground.domain.Client;
+import com.aliezkan.r2dbcplayground.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ClientPurchaseService {
+public class ClientServiceImpl implements ClientService {
 
     private final ClientDAO clientDAO;
     public Mono<List<Client>> getAllClients() {
