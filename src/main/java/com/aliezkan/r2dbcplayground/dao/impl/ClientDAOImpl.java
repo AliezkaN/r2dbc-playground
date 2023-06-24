@@ -22,7 +22,7 @@ public class ClientDAOImpl implements ClientDAO {
     private final SelmaService selma;
 
     @Override
-    public Mono<List<Client>> getAll() {
+    public Mono<List<Client>> findAll() {
         return r2dbcEntityTemplate
                 .select(ClientSqlEntity.class).all()
                 .collectList()
@@ -32,7 +32,7 @@ public class ClientDAOImpl implements ClientDAO {
                 .cache();
     }
 
-    public Mono<Optional<Client>> getById(Long clientId) {
+    public Mono<Optional<Client>> findById(Long clientId) {
         return r2dbcEntityTemplate.selectOne(
                         Query.query(Criteria.where("clientId").is(clientId)),
                         ClientSqlEntity.class)

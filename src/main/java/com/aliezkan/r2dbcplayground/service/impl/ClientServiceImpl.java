@@ -16,11 +16,11 @@ public class ClientServiceImpl implements ClientService {
 
     private final ClientDAO clientDAO;
     public Mono<List<Client>> getAllClients() {
-        return clientDAO.getAll().cache();
+        return clientDAO.findAll().cache();
     }
 
     public Mono<Client> getClientById(Long clientId){
-        return clientDAO.getById(clientId)
+        return clientDAO.findById(clientId)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .cache();

@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ClientDAO {
-    Mono<List<Client>> getAll();
-    Mono<Optional<Client>> getById(Long clientId);
+    Mono<List<Client>> findAll();
+    Mono<Optional<Client>> findById(Long clientId);
 }
