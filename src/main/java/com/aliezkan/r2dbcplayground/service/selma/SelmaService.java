@@ -3,6 +3,7 @@ package com.aliezkan.r2dbcplayground.service.selma;
 import com.aliezkan.r2dbcplayground.domain.Client;
 import com.aliezkan.r2dbcplayground.domain.Purchase;
 import com.aliezkan.r2dbcplayground.dto.ClientDto;
+import com.aliezkan.r2dbcplayground.dto.PurchaseDto;
 import com.aliezkan.r2dbcplayground.persistense.ClientSqlEntity;
 import com.aliezkan.r2dbcplayground.persistense.PurchaseSqlEntity;
 import fr.xebia.extras.selma.IoC;
@@ -14,4 +15,5 @@ public interface SelmaService {
     Purchase toDomain(PurchaseSqlEntity entity);
 
     ClientDto toDto(Client domain);
+    PurchaseDto toDto(Purchase domain);
 }
