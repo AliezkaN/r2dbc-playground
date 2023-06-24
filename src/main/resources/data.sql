@@ -1,4 +1,13 @@
 -- -----------------------------------------------------------------------------------
+-- Truncate the "client" table and restart identity column
+-- -----------------------------------------------------------------------------------
+TRUNCATE TABLE client RESTART IDENTITY CASCADE;
+-- -----------------------------------------------------------------------------------
+-- Truncate the "purchases" table and restart identity column
+-- -----------------------------------------------------------------------------------
+TRUNCATE TABLE purchases RESTART IDENTITY CASCADE;
+
+-- -----------------------------------------------------------------------------------
 -- INSERT statements for the "client" table
 -- -----------------------------------------------------------------------------------
 INSERT INTO client (first_name, last_name, email, phone_number, address)
