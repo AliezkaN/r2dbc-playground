@@ -1,0 +1,3 @@
+spring:
+  r2dbc:
+    url: ${POSTGRES_URL}
