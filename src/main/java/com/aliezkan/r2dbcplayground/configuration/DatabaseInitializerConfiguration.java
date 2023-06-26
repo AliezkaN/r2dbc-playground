@@ -14,8 +14,9 @@ public class DatabaseInitializerConfiguration {
     public ConnectionFactoryInitializer databaseInitializer(ConnectionFactory connectionFactory) {
         ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();
         initializer.setConnectionFactory(connectionFactory);
-        initializer.setDatabasePopulator(new ResourceDatabasePopulator(new ClassPathResource("schema.sql")));
-        initializer.setDatabasePopulator(new ResourceDatabasePopulator(new ClassPathResource("data.sql")));
+        ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
+        resourceDatabasePopulator.addScripts(new ClassPathResource("schema.sql"), new ClassPathResource("data.sql"));
+        initializer.setDatabasePopulator(resourceDatabasePopulator);
         return initializer;
     }
 }
