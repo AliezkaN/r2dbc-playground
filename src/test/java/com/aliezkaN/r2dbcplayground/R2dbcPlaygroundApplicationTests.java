@@ -1,4 +1,4 @@
-package com.aliezkaN.r2dbcplayground;
+package com.aliezkan.r2dbcplayground;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
