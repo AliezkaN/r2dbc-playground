@@ -24,6 +24,7 @@ import org.testcontainers.containers.PostgreSQLR2DBCDatabaseContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -60,7 +61,7 @@ public class DaosTest {
     Stream<DynamicNode> tests() {
         return Stream.of(
                 DynamicTest.dynamicTest("find all clients test", () ->
-                        Assertions.assertEquals(EXPECTED_SIZE_OF_CLIENTS, clientDAO.findAll().block().size())),
+                        Assertions.assertEquals(EXPECTED_SIZE_OF_CLIENTS, Optional.ofNullable(clientDAO.findAll().block()).map(List::size).orElse(0))),
                 DynamicTest.dynamicTest("find client by id test with client", () ->
                         Assertions.assertEquals(
                                 Optional.of(new Client()
